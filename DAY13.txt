@@ -1,0 +1,173 @@
+AUGUST 7, 2023
+
+1. CL PROGRAM TO ADD 2 NUMBERS
+
+ Columns . . . :    1  71            Edit                      TEN23LIB/TRNGSRC 
+ SEU==>                                                                  ADDNUM 
+ FMT **  ...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7  
+        *************** Beginning of data ************************************* 
+0001.00 PGM                                                                     
+0002.00              DCL        VAR(&A) TYPE(*DEC) LEN(3 0) VALUE(150)          
+0003.00              DCL        VAR(&B) TYPE(*DEC) LEN(3 0) VALUE(200)          
+0004.00              DCL        VAR(&C) TYPE(*DEC) LEN(5 0) VALUE(0)            
+0005.00              DCL        VAR(&CH) TYPE(*CHAR) LEN(5)                     
+0006.00              CHGVAR     VAR(&C) VALUE(&A + &B)                          
+0007.00              CHGVAR  VAR(&CH)  VALUE(&C)                                
+0008.00              SNDPGMMSG  MSG('THE SUM' *BCAT &CH)                        
+0009.00 ENDPGM                                                                  
+        ****************** End of data **************************************** 
+                                                                                
+2.WAP TO PERFROM THE CONCATENATION PROGRAM
+
+ Columns . . . :    1  71            Edit                      TEN23LIB/TRNGSRC 
+ SEU==>                                                                WITHCATS 
+ FMT **  ...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7  
+        *************** Beginning of data ************************************* 
+0001.00 PGM                                                                     
+0002.00              DCL        VAR(&A) TYPE(*CHAR) LEN(20) VALUE('RAM')        
+0003.00              DCL        VAR(&B) TYPE(*CHAR) LEN(20) VALUE('RAHIM')      
+0004.00              DCL        VAR(&C) TYPE(*CHAR) LEN(20) VALUE('JESUS')      
+0005.00              SNDPGMMSG  MSG(&A *CAT &B *CAT &C)                         
+0006.00              SNDPGMMSG  MSG(&A *BCAT &B *BCAT &C)                       
+0007.00              SNDPGMMSG  MSG(&A *TCAT &B *TCAT &C)                       
+0008.00 ENDPGM                                                                  
+        ****************** End of data **************************************** 
+
+3.WRITE A PROGRAM TO COUNT THE VOWELS
+
+ Columns . . . :    1  71            Edit                      TEN23LIB/TRNGSRC 
+ SEU==>                                                                 VOWELSC 
+ FMT **  ...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7  
+        *************** Beginning of data ************************************* 
+0001.00 PGM PARM(&NM)                                                           
+0002.00              DCL        VAR(&NM) TYPE(*CHAR) LEN(20)                    
+0003.00              DCL        VAR(&CH) TYPE(*CHAR) LEN(1)                     
+0004.00              DCL        VAR(&POS) TYPE(*DEC) LEN(2 0) VALUE(1)          
+0005.00              DCL        VAR(&CNT) TYPE(*DEC) LEN(2 0)                   
+0006.00              DCL        VAR(&CHCNT) TYPE(*CHAR) LEN(2)                  
+0007.00              DOWHILE    COND(&POS < 20)                                 
+0008.00              CHGVAR     VAR(&CH) VALUE(%SST(&NM &POS 1))                
+0009.00              IF         COND(&CH = 'A' *OR &CH = 'E' *OR &CH = 'I' +    
+0010.00                           *OR &CH = '0' *OR &CH = 'U') THEN(CHGVAR +    
+0011.00                           VAR(&CNT) VALUE(&CNT + 1))                    
+0012.00              CHGVAR VAR(&POS) VALUE(&POS + 1)                           
+0013.00              ENDDO                                                      
+0014.00              CHGVAR VAR(&CHCNT) VALUE(&CNT)                             
+0015.00              SNDPGMMSG  MSG('TOTAL VOWELS IN YOUR NAME ARE' *BCAT +     
+0016.00                            &CHCNT)                                      
+                                                                                
+0017.00 ENDPGM                                                                  
+        ****************** End of data **************************************** 
+                                                                                
+4.WAP TO REVERT A NAME
+
+ Columns . . . :    1  71            Edit                      TEN23LIB/TRNGSRC 
+ SEU==>                                                                  REVERT 
+ FMT **  ...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7  
+        *************** Beginning of data ************************************* 
+0001.00 PGM PARM(&NM)                                                           
+0002.00              DCL        VAR(&NM) TYPE(*CHAR) LEN(20)                    
+0003.00              DCL        VAR(&CH) TYPE(*CHAR) LEN(1)                     
+0004.00              DCL        VAR(&POS) TYPE(*DEC) LEN(2 0) VALUE(20)         
+0005.00              DCL        VAR(&RV) TYPE(*CHAR) LEN(20)                    
+0006.00              DOWHILE    COND(&POS > 0)                                  
+0007.00              CHGVAR     VAR(&CH) VALUE(%SST(&NM &POS 1))                
+0008.00              CHGVAR     VAR(&RV) VALUE(&RV *TCAT &CH)                   
+0009.00              CHGVAR     VAR(&POS) VALUE(&POS - 1)                       
+0010.00              ENDDO                                                      
+0011.00              SNDPGMMSG  MSG(&NM *BCAT 'REVERTED AS' *BCAT &RV)          
+0012.00 ENDPGM                                                                  
+        ****************** End of data **************************************** 
+
+5. ONE DAY A THIEF AFTER ROBBERY STARTED RUNNING 10KM/HR. POLICE WERE BEHIND THE THIEF BY 1KM IN 1ST HOUR. THE POLICE WERE INCREASING THEIR KM BY 1 EVERY HOUR.
+AT WHICH KM THE POLICE CAUGHT THE THIEF
+
+ Columns . . . :    1  71            Edit                      TEN23LIB/TRNGSRC 
+ SEU==>                                                                THIEFPOL 
+ FMT **  ...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7  
+        *************** Beginning of data ************************************* 
+0001.00 PGM                                                                     
+0002.00              DCL        VAR(&H) TYPE(*DEC) LEN(3 0) VALUE(1)            
+0003.00              DCL        VAR(&P) TYPE(*DEC) LEN(3 0) VALUE(1)            
+0004.00              DCL        VAR(&T) TYPE(*DEC) LEN(3 0) VALUE(10)           
+0005.00              DCL        VAR(&CP) TYPE(*CHAR) LEN(3)                     
+0006.00              DOWHILE    COND(&T > &P)                                   
+0007.00              CHGVAR     VAR(&H) VALUE(&H + 1)                           
+0008.00              CHGVAR     VAR(&P) VALUE(&P + &H)                          
+0009.00              CHGVAR     VAR(&T) VALUE(&T + 10)                          
+0010.00              ENDDO                                                      
+0011.00              CHGVAR     VAR(&CP) VALUE(&P)                              
+0012.00              SNDPGMMSG  MSG('THE POLICE CAUGHT THIEF AFTER KMS ' +      
+0013.00                           *BCAT &CP)                                    
+0014.00 ENDPGM                                                                  
+        ****************** End of data **************************************** 
+                                                                                
+6. WRITE A PROGRAM TO PERFORM CALCULATOR FUNTIONS
+
+ Columns . . . :    1  71            Edit                      TEN23LIB/TRNGSRC 
+ SEU==>                                                                   CALCC 
+ FMT **  ...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7  
+        *************** Beginning of data ************************************* 
+0001.00 PGM                                                                     
+0002.00              DCLF       FILE(TEN23LIB/CALCD)                            
+0003.00              DOWHILE    COND(&IN53 = '0')                               
+0004.00              SNDRCVF    RCDFMT(NUMENT)                                  
+0005.00              IF         COND(&IN53='1') THEN(LEAVE)                     
+0006.00              IF         COND(&OPT = 'A') THEN(CHGVAR VAR(&C) +          
+0007.00                           VALUE(&A + &B))                               
+0008.00              IF         COND(&OPT = 'S') THEN(CHGVAR VAR(&C) +          
+0009.00                           VALUE(&A - &B))                               
+0010.00              IF         COND(&OPT = 'M') THEN(CHGVAR VAR(&C) +          
+0011.00                           VALUE(&A * &B))                               
+0012.00              IF         COND(&OPT = 'D') THEN(CHGVAR VAR(&C) +          
+0013.00                           VALUE(&A / &B))                               
+0014.00              ENDDO                                                      
+0015.00 ENDPGM                                                                  
+        ****************** End of data **************************************** 
+
+7.Application menu using CLP
+
+ FMT **  ...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+.
+        *************** Beginning of data ********************************
+0001.00 PGM                                                               
+0002.00             DCLF        FILE(*CURLIB/MENUDSP)                     
+0003.00             DOWHILE COND(&IN03='0')                               
+0004.00             SNDRCVF    RCDFMT(MENUSCR)                            
+0005.00             IF COND(&IN03='1') THEN(LEAVE)                        
+0006.00              IF         COND(&OPT = '1') THEN(CALL +              
+0006.01                           PGM(TEN21LIB/EMPSFLR))                  
+0007.00              IF         COND(&OPT = '2') THEN(CALL +              
+0008.00                           PGM(TEN21LIB/EMPUPDR))                  
+0009.00              IF         COND(&OPT = '3') THEN(CALL +              
+0010.00                           PGM(TEN21LIB/DEPTQRYR))                 
+0011.00              IF         COND(&OPT = '4') THEN(CALL +              
+0012.00                           PGM(TEN21LIB/NAVIGATER))                
+0013.00              IF         COND(&OPT = '5') THEN(SBMJOB CMD(CALL +   
+0014.00                           PGM(TEN21LIB/SALREPOR)))                
+0015.00              ENDDO                                                
+0016.00 ENDPGM                                                            
+        ****************** End of data ***********************************  
+                                          
+8. Application	menu 
+
+ FMT **  ...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 
+        *************** Beginning of data *************************************
+0001.00 PGM                                                                    
+0002.00              DCLF       FILE(MENU1DSP)                                 
+0003.00              DOWHILE COND(&IN03='0')                                   
+0004.00              SNDRCVF RCDFMT(MENUSCR)                                   
+0005.00              IF COND(&IN03 = '1') THEN(LEAVE)                          
+0005.01              IF         COND(&RTNFLD = 'M1') THEN(CALL +               
+0005.02                           PGM(TEN21LIB/PERSONR))                       
+0008.00              IF         COND(&RTNFLD = 'M2') THEN(CALL +               
+0009.00                           PGM(TEN21LIB/EMPURPDR))                      
+0010.00              IF         COND(&RTNFLD = 'M3') THEN(CALL +               
+0011.00                           PGM(TEN21LIB/DEPTQRYR))                      
+0012.00              IF         COND(&RTNFLD = 'M4') THEN(CALL +               
+0013.00                           PGM(TEN21LIB/NAVIGATER))                     
+0014.00              IF         COND(&RTNFLD = 'M5') THEN(SBMJOB CMD(CALL +    
+0015.00                           PGM(TEN21LIB/SALREPOR)))                     
+0016.00              ENDDO                                                     
+0017.00 ENDPGM                                                                  
+        ****************** End of data **************************************** 
+
